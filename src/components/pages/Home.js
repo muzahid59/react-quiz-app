@@ -1,7 +1,7 @@
+import Videos from "../Videos";
+
 export default function Home() {
     return (
-        <div>
-            Hello from Home
-        </div>
+        <Videos />
     );
 }
