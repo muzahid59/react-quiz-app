@@ -1,7 +1,7 @@
 
-export default function Checkbox({children}) {
+export default function Checkbox({ className, children}) {
     return (
-        <label>
+        <label className= {className}>
             <input type="checkbox" />
             <span>{children}</span>
         </label>
