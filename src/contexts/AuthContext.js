@@ -25,9 +25,12 @@ export function AuthProvider({children}) {
     // signup
     async function signup(email, password, username) {
         // firebase signup
+        console.log("Email: ", email);
+        console.log("Password", password);
+        console.log("username", username)
         const auth = getAuth();
         await createUserWithEmailAndPassword(auth, email, password);  
-        updateProfile(auth.currentUser, {
+        await updateProfile(auth.currentUser, {
             displayName: username
         });  
         const user = auth.currentUser;
