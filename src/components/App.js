@@ -1,13 +1,12 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import '../styles/App.css';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from '../contexts/AuthContext';
 import Layout from './layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Quiz from './pages/Quiz';
 import Result from './pages/Result';
 import Signup from './pages/Signup';
-
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
           </Routes>
         </Layout>
       </AuthProvider>
-      
     </Router>
   );
 }
