@@ -20,9 +20,6 @@ export default function SignupForm() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log("Username: ", username);
-        console.log("Email: ", email);
-        console.log("Password", password);   
         if (password && password !== confirmPassword) {
             return setError("Passwords do not match");
         }   
