@@ -19,7 +19,7 @@ function App() {
             <Route exact path="/" Component={Home} />
             <Route path="/login" element={<PublicRoute component={Login} />} />
             <Route path="/signup" element={<PublicRoute component={Signup} />} />
-            <Route path="/quiz" element={<PrivateRoute component={Quiz} />} />
+            <Route path="/quiz/:id" element={<PrivateRoute component={Quiz} />} />
             <Route path="/result" element={<PrivateRoute component={Result} />} />
           </Routes>
         </Layout>
