@@ -20,7 +20,7 @@ function App() {
             <Route path="/login" element={<PublicRoute component={Login} />} />
             <Route path="/signup" element={<PublicRoute component={Signup} />} />
             <Route path="/quiz/:id" element={<PrivateRoute component={Quiz} />} />
-            <Route path="/result" element={<PrivateRoute component={Result} />} />
+            <Route path="/result/:id" element={<PrivateRoute component={Result} />} />
           </Routes>
         </Layout>
       </AuthProvider>
