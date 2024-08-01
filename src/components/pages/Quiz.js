@@ -1,4 +1,4 @@
-import { _ } from 'lodash';
+import _ from 'lodash';
 import { useEffect, useReducer, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useQuestionList from '../../hooks/useQuestionList';
@@ -28,7 +28,6 @@ const reducer = (state, action) => {
 
 export default function Quiz() {
     const {id} = useParams();
-    // console.log("Quiz ID: ", id);
     const {loading, questions, error} = useQuestionList(id);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [qna, dispatch ] = useReducer(reducer, initialState);
@@ -41,14 +40,27 @@ export default function Quiz() {
         console.log('questions',questions);
     }, [questions]);
 
-    function handleAnswerOnCheck({e, optionIndex, checked}) {
+    function handleAnswerOnCheck(e, optionIndex) {
+        console.log('checkbox', e.target.checked);
         dispatch({
             type: 'answer',
             questionId: currentQuestion,
             optionId: optionIndex,
-            value: checked,
+            value: e.target.checked,
         });
     }
+    function nextQuestion() {
+        if (currentQuestion + 1 < questions.length ) {
+            setCurrentQuestion(currentQuestion + 1);
+        }
+    }
+
+    function prevQuestion() {
+        if (currentQuestion > 0) {
+            setCurrentQuestion(currentQuestion - 1);
+        }
+    }
+    const progress = questions.length > 0 ? ((currentQuestion + 1) / questions.length) * 100 : 0;
 
     return (
         <>
@@ -58,8 +70,8 @@ export default function Quiz() {
             <>
                 <h1>{ qna[currentQuestion].title }</h1>
                 <h4>Question can have multiple answers</h4>
-                <Answers options={qna[currentQuestion].options} onCheck={handleAnswerOnCheck}/>
-                <ProgressBar />
+                <Answers options={qna[currentQuestion].options} handleChange={handleAnswerOnCheck}/>
+                <ProgressBar next={nextQuestion} prev={prevQuestion} progress={progress} />
                 <MiniPlayer /> 
              </>
         )}
