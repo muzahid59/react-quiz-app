@@ -1,7 +1,7 @@
 import { get, getDatabase, query, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 
-export default function useQuestionList(videoID) {
+export default function useQuestions(videoID) {
     const [loading, setLoading] = useState(true);
     const [questions, setQuestions] = useState([]);
     const [error, setError] = useState();
